@@ -12,11 +12,11 @@ let counter = setInterval(() => {
   let dateDiff = countDownDate - dateNow;
 
   // Get Tiime Units
-  let days = Math.floor(dateDiff / 1000 / 60 / 60 / 24);
+  let days = Math.floor(dateDiff / (1000 * 60 * 60 * 24));
 
-  let hours = Math.floor((dateDiff % (1000 * 60 * 60 * 24)) / 1000 / 60 / 60);
+  let hours = Math.floor((dateDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-  let minutes = Math.floor((dateDiff % (1000 * 60 * 60)) / 100 / 60);
+  let minutes = Math.floor((dateDiff % (1000 * 60 * 60)) / (1000 * 60));
 
   let seconds = Math.floor((dateDiff % (1000 * 60)) / 1000);
   document.querySelector(".days").innerHTML = days < 100 ? `0${days}` : days;
@@ -31,20 +31,3 @@ let counter = setInterval(() => {
   }
 }, 1000);
 
-let myBtn = document.querySelector(".slider");
-
-window.onscroll = function () {
-  if (window.scrollY >= 600) {
-    myBtn.style.display = "block";
-  } else {
-    myBtn.style.display = "none";
-  }
-};
-
-myBtn.onclick = function () {
-  window.scrollTo({
-    left: 0,
-    top: 0,
-    behavior: "smooth",
-  });
-};
